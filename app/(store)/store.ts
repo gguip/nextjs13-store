@@ -1,7 +1,10 @@
 import { create } from "zustand";
 
 type useCartProps = {
-  cart: string[];
+  cart: {
+    quantity: number;
+    price_id: string;
+  }[];
   product: {
     name: string;
     description: string;
@@ -30,7 +33,7 @@ const useCart = create<useCartProps>((set, get) => ({
       images: [],
     },
   },
-  openModal: false,
+  openModal: true,
   setOpenModal: () => {
     set((state) => {
       return {
@@ -51,7 +54,7 @@ const useCart = create<useCartProps>((set, get) => ({
   addItemToCart: (params) => {
     const { newItem } = params;
     set((state) => {
-      const newCart = { ...state.cart, newItem };
+      const newCart = [...state.cart, newItem];
       return {
         ...state,
         cart: newCart,

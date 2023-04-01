@@ -13,10 +13,19 @@ export default function ProductPage(props: ProductPageProps) {
   const { searchParams } = props;
   const { price_id } = searchParams;
   const product = useCart((state) => state.product);
+  const addItemToCart = useCart((state) => state.addItemToCart);
   const { cost, productInformation, name, description } = product;
 
   if (!product?.name) {
     window.location.href = "/";
+  }
+
+  function handleAddToCart() {
+    const newItem = {
+      quantity: 1,
+      price_id,
+    };
+    addItemToCart({ newItem });
   }
 
   return (
@@ -31,7 +40,10 @@ export default function ProductPage(props: ProductPageProps) {
             <p className="md:text-base">R$ {cost / 100}</p>
           </div>
           <p className="text-sm flex-1">{description}</p>
-          <button className="bg-slate-700 text-white hover:bg-slate-500 cursor-pointer ml-auto px-4 py-2">
+          <button
+            className="bg-slate-700 text-white hover:bg-slate-500 cursor-pointer ml-auto px-4 py-2"
+            onClick={handleAddToCart}
+          >
             Add to Cart
           </button>
         </div>

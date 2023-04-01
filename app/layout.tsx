@@ -1,6 +1,8 @@
 import { Inter } from "next/font/google";
 import Link from "next/link";
 
+import Header from "./Header";
+
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -10,7 +12,11 @@ export const metadata = {
   description: "Here you find all fruits",
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en">
       <head>
@@ -25,19 +31,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body
         className={"min-h-screen flex flex-col relative " + inter.className}
       >
-        <header
-          className="sticky top-0 p-6 bg-gray-200 border-b border-solid border-blue-900 
-        shadow-md z-50 text-2xl sm:text-3xl md:text-4xl sm:p-8 flex items-center justify-between"
-        >
-          <Link href={"/"}>
-            <h1 className="uppercase cursor-pointer hover:scale-110">
-              Fruit Shop
-            </h1>
-          </Link>
-          <i className="fa-solid fa-cart-shopping cursor-pointer hover:scale-110 hover:text-slate-500" />
-        </header>
+        <Header />
+
         <div className="flex-1">{children}</div>
-        <footer>Footer</footer>
+        <footer className="flex items-center flex-wrap justify-center border-t border-solid border-blue-900 p-10 md:p-8">
+          <Link href={"https://www.instagram.com"} target="_blank">
+            <i className="fa-brands fa-instagram text-slate-700 hover:text-slate-500 hover:scale-110 cursor-pointer text-2xl sm:text-3xl md:text-4xl" />
+          </Link>
+        </footer>
+        <div id="portal"></div>
       </body>
     </html>
   );
