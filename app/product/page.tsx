@@ -16,7 +16,7 @@ export default function ProductPage(props: ProductPageProps) {
   const addItemToCart = useCart((state) => state.addItemToCart);
   const { cost, productInformation, name, description } = product;
 
-  if (!product?.name) {
+  if (!product?.name && typeof window === "object") {
     window.location.href = "/";
   }
 
