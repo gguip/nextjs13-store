@@ -10,7 +10,7 @@ type ProductInfo = {
   images: string[];
 };
 
-type ProductProps = {
+export type ProductProps = {
   id: string;
   unit_amount: number;
   product: ProductInfo;
