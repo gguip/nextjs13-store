@@ -4,6 +4,8 @@ type useCartProps = {
   cart: {
     quantity: number;
     price_id: string;
+    name: string;
+    cost: number;
   }[];
   product: {
     name: string;
@@ -33,7 +35,7 @@ const useCart = create<useCartProps>((set, get) => ({
       images: [],
     },
   },
-  openModal: true,
+  openModal: false,
   setOpenModal: () => {
     set((state) => {
       return {
