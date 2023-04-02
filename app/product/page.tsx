@@ -3,23 +3,10 @@
 import React from "react";
 import useCart from "../(store)/store";
 
-type ProductPageProps = {
-  searchParams: {
-    price_id: string;
-  };
-};
-
-export default function ProductPage(props: ProductPageProps) {
-  const { searchParams } = props;
-  console.log(
-    "🚀 ~ file: page.tsx:14 ~ ProductPage ~ searchParams:",
-    searchParams
-  );
-  const { price_id } = searchParams;
-  console.log("🚀 ~ file: page.tsx:16 ~ ProductPage ~ price_id:", price_id);
+export default function ProductPage() {
   const product = useCart((state) => state.product);
   const addItemToCart = useCart((state) => state.addItemToCart);
-  const { cost, productInformation, name, description } = product;
+  const { cost, productInformation, name, description, price_id } = product;
 
   if (!product?.name && typeof window === "object") {
     window.location.href = "/";
