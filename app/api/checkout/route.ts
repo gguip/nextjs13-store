@@ -16,8 +16,8 @@ export async function POST(request: any) {
     });
 
     const session = await stripe.checkout.sessions.create({
-      success_url: "http://localhost:3000/success",
-      cancel_url: "http://localhost:3000/cancel",
+      success_url: "https://fruit-store-nine.vercel.app/success",
+      cancel_url: "https://fruit-store-nine.vercel.app/cancel",
       line_items: body.lineItems,
       mode: "payment",
     });
